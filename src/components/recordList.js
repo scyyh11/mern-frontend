@@ -25,7 +25,7 @@ export default function RecordList() {
  // This method fetches the records from the database.
  useEffect(() => {
    async function getRecords() {
-     const response = await fetch(`http://localhost:5000/record/`);
+     const response = await fetch(`https://express-backend-vfm5.onrender.com/record/`);
  
      if (!response.ok) {
        const message = `An error occurred: ${response.statusText}`;
@@ -44,7 +44,7 @@ export default function RecordList() {
  
  // This method will delete a record
  async function deleteRecord(id) {
-   await fetch(`http://localhost:5000/${id}`, {
+   await fetch(`https://express-backend-vfm5.onrender.com/${id}`, {
      method: "DELETE"
    });
  
@@ -68,7 +68,10 @@ export default function RecordList() {
  // This following section will display the table with the records of individuals.
  return (
    <div>
-     <h3>Record List</h3>
+     <h3>Hello! </h3>
+     This is a website modified from MERN stack tutorial from mongodb's sample to test how&nbsp;
+     <a href="https://render.com/">render</a>
+     &nbsp;works as a alternative to use as web host.
      <table className="table table-striped" style={{ marginTop: 20 }}>
        <thead>
          <tr>
