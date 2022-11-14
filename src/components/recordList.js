@@ -71,6 +71,8 @@ export default function RecordList() {
      <h3>Hello! </h3>
      This is a website modified from MERN stack tutorial from mongodb's sample to test how&nbsp;
      <a href="https://render.com/">render</a>
+     &nbsp;and&nbsp;
+     <a href="https://vercel.com/">vercel</a>
      &nbsp;works as an alternative to use as web host... Although the deployment is slow, it works well and can deploy automatically after pushing to the main branch.
      <table className="table table-striped" style={{ marginTop: 20 }}>
        <thead>
