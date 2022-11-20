@@ -1,8 +1,8 @@
-$color-purple: #8B5CF6;
+/* $color-purple: #8B5CF6;
 $color-pink: #EC4899;
 $color-gray: #9CA3AF;
 $color-black: #1F2937;
-$card-size: 23rem;
+$card-size: 23rem; */
 
 body {
   width: 100vw;
@@ -11,7 +11,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-image: linear-gradient(45deg, $color-gray, $color-black);
+  background-image: linear-gradient(45deg, #9CA3AF, #1F2937);
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -21,8 +21,8 @@ body {
 
 .carousel {
   position: relative;
-  width: $card-size;
-  height: $card-size;
+  width: 23rem;
+  height: 23rem;
   perspective: 500px;
   transform-style: preserve-3d;
 }
@@ -46,20 +46,20 @@ body {
   padding: 2rem;
   background-color: hsl(280deg, 0%, calc(100% - var(--abs-offset) * 60%));
   border-radius: 1rem;
-  color: $color-gray;
+  color: #9CA3AF;
   text-align: justify;
   transition: all 0.3s ease-out;
+}
   
-  .image {
-    text-align: center;
-    transition: all 0.3s ease-out;
-    opacity: var(--active);
-    top: 80px;
-    max-width: 80%;
-    height: auto;
-    display: block;
-    position: absolute;
-  }
+.image {
+  text-align: center;
+  transition: all 0.3s ease-out;
+  opacity: var(--active);
+  top: 80px;
+  max-width: 80%;
+  height: auto;
+  display: block;
+  position: absolute;
 }
 
 .nav {
@@ -76,14 +76,15 @@ body {
   background: unset;
   border: unset;
   
-  &.left {
-    transform: translateX(-100%) translatey(-50%);
-  }
-  
-  &.right {
-    right: 0;
-    transform: translateX(100%) translatey(-50%);
-  }
+}
+
+.left {
+  transform: translateX(-100%) translatey(-50%);
+}
+
+.right {
+  right: 0;
+  transform: translateX(100%) translatey(-50%);
 }
 
 .title {

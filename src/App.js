@@ -24,10 +24,10 @@
  
 // export default App;
 
-import React, {useState} from 'https://cdn.skypack.dev/react';
-import ReactDOM from 'https://cdn.skypack.dev/react-dom';
-import {TiChevronLeftOutline, TiChevronRightOutline} from 'https://cdn.skypack.dev/react-icons/ti';
-import './App.scss'
+import React, {useState} from 'react';
+import ReactDOM from 'react-dom';
+import {TiChevronLeftOutline, TiChevronRightOutline} from 'react-icons/ti';
+import './App.css'
 
 const CARDS = 5;
 const MAX_VISIBILITY = 2;
