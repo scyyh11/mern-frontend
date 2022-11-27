@@ -1,49 +1,18 @@
-// import React from "react";
- 
-// // We use Route in order to define the different routes of our application
-// import { Route, Routes } from "react-router-dom";
- 
-// // We import all the components we need in our app
-// import Navbar from "./components/navbar";
-// import RecordList from "./components/recordList";
-// import Edit from "./components/edit";
-// import Create from "./components/create";
- 
-// const App = () => {
-//   return (
-//     <div>
-//     <Routes>
-//       <Route exact path="/" element={<RecordList />} />
-//       <Route path="/edit/:id" element={<Edit />} />
-//       <Route path="/create" element={<Create />} />
-//       </Routes>
-//       <Navbar />
-//     </div>
-//  );
-// };
- 
-// export default App;
-
 import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
+import Papa from 'papaparse';
 import {TiChevronLeftOutline, TiChevronRightOutline} from 'react-icons/ti';
 import './App.css'
 
-const CARDS = 5;
 const MAX_VISIBILITY = 2;
-const state = {
-  imageUrl: [
-    "https://web.cse.ohio-state.edu/~chen.8028/VisPubImages/Images/1990/VisC.6.1.png",
-    "https://web.cse.ohio-state.edu/~chen.8028/VisPubImages/Images/1990/VisC.6.3.png",
-    "https://web.cse.ohio-state.edu/~chen.8028/VisPubImages/Images/1990/VisC.6.2.png",
-    "https://web.cse.ohio-state.edu/~chen.8028/VisPubImages/Images/1990/VisC.6.6.png",
-    "https://web.cse.ohio-state.edu/~chen.8028/VisPubImages/Images/1990/VisC.6.5.png",
-  ]
-};
 
-const Card = ({url}) => (
+const Card = ({url, name, doi, year}) => (
   <div className='card'>
-    <img src={url} class='image'></img>
+    <img src={url} class='image' alt={name}></img>
+    <div className="info">
+      <p>Title: {name}</p>
+      <p>Doi: {doi}</p>
+      <p>Year: {year}</p>
+    </div>
   </div>
 );
 
@@ -72,20 +41,40 @@ const Carousel = ({children}) => {
   );
 };
 
-const ImgBrowse = () => {
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      images: []
+    };
+  }
+
+  componentDidMount() {
+    this.importCSV();
+  }
+
+  importCSV = () => {
+    Papa.parse("https://files.catbox.moe/hxstdu.csv", {
+      header: true,
+      download: true,
+      complete: function(results) {
+        this.setState({ images: results.data });
+        console.log(this.state.images);
+        console.log(this.state.images);
+      }.bind(this)
+    });
+  }
+
+  render() {
+    document.title = "Image viewer";
+    return (
+      <div className='app'>
+      <Carousel>
+        {this.state.images.map((image) => (
+          <Card url={image.url} name={image.name} doi={image.doi} year={image.year}/>
+        ))}
+      </Carousel>
+    </div>
+    )
+  }
 }
-
-const App = () => (
-  <div className='app'>
-    <Carousel>
-      {state.imageUrl.map((image) => (
-        <Card url={image} />
-      ))}
-    </Carousel>
-  </div>
-);
-
-ReactDOM.render(
-  <App/>,
-  document.body
-);
